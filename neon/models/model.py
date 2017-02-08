@@ -71,9 +71,9 @@ class Model(NervanaObject):
             self.load_params(layers, load_states=(not weights_only))
         else:
             # Wrap the list of layers in a Sequential container if a raw list of layers
-            if type(layers) in (Sequential, Tree, SingleOutputTree, Seq2Seq):
+            if isinstance(layers, (Sequential, Tree, SingleOutputTree, Seq2Seq):
                 self.layers = layers
-            elif type(layers) == SkipThought:
+            elif isinstance(layers, SkipThought):
                 self.layers = layers
                 if hasattr(layers, 'layer_dict'):
                     self.layer_dict = layers.layer_dict
